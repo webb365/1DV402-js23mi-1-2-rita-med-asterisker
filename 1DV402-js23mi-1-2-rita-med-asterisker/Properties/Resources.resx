@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Ask_Count" xml:space="preserve">
+    <value>Ange det uddaantalet asterisker &lt;Max {0}&gt; i diamantens midja:</value>
+  </data>
   <data name="Continue_Prompt" xml:space="preserve">
     <value>Tryck tagent för att fortsätta - ESC avslutar</value>
   </data>

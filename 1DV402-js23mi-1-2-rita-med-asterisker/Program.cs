@@ -10,9 +10,10 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
     {
         static void Main(string[] args)
         {
+            const byte maxValue = 79;
             do
             {
-                Console.WriteLine("Funkar");
+                ReadOddByte( string.Format(Properties.Resources.Ask_Count, maxValue),maxValue);
             } while (IsContinuing());
         }
 
@@ -27,14 +28,32 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
       
         
         /// <summary>
-        /// 
+        ///  Frågar användaren efter ett värde och därefter berabetas värdet och det säkerställs att värdet är korrekt för programet
         /// </summary>
-        /// <param name="prompt"></param>
-        /// <param name="maxValue"></param>
+        /// <param name="prompt"> Texten som skrivs ut till användaren för att be hen mata in ett värde</param>
+        /// <param name="maxValue">Det högsta värdet som användaren kan mata in från början är det 255</param>
         /// <returns></returns>
         static byte ReadOddByte(string prompt = null, byte maxValue = 255) {
-         
-            throw new Exception();       
+            byte value;
+            string text;
+            while (true) {
+            Console.Write(prompt);
+            text = Console.ReadLine();
+
+                try
+                {
+                    value = byte.Parse(text);
+                    if (value % 2 == 0 || value >= maxValue || value < 1)
+                    {
+                        throw new Exception();
+                    }
+                    return value;
+                }
+                catch {
+                    ViewMessage(string.Format(Properties.Resources.Error_Message, text), true);
+                }
+            }
+
         }
 
         /// <summary>

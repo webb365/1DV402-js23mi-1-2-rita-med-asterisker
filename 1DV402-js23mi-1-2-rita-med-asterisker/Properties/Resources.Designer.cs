@@ -61,6 +61,15 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ange det uddaantalet asterisker &lt;Max {0}&gt; i diamantens midja:.
+        /// </summary>
+        internal static string Ask_Count {
+            get {
+                return ResourceManager.GetString("Ask_Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tryck tagent för att fortsätta - ESC avslutar.
         /// </summary>
         internal static string Continue_Prompt {
