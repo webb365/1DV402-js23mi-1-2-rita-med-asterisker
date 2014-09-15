@@ -120,6 +120,9 @@
   <data name="Ask_Count" xml:space="preserve">
     <value>Ange det uddaantalet asterisker &lt;Max {0}&gt; i diamantens midja:</value>
   </data>
+  <data name="Ask_Mats" xml:space="preserve">
+    <value>Hur ska man göra här Mats? Det blir ingen diamant ifall värdet är 1 och det står inget om vad man ska göra med detta i dokumenentationen. </value>
+  </data>
   <data name="Continue_Prompt" xml:space="preserve">
     <value>Tryck tagent för att fortsätta - ESC avslutar</value>
   </data>

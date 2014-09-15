@@ -20,11 +20,21 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
 
         /// <summary>
         ///     Presterar meddelande som frågar ifall skriptet ska fortsättas
+        ///     
+        /// (EXTRA) Lagt till så den renasr och resetar höjden på consolen
         /// </summary>
         /// <returns> Retunerar en bool som säger ifall skriptet ska fortsättas</returns>
         static bool IsContinuing() {
+            bool stop;
             ViewMessage(Properties.Resources.Continue_Prompt);
-            return Console.ReadKey(true).Key != ConsoleKey.Escape;
+            stop = Console.ReadKey(true).Key != ConsoleKey.Escape;
+            if (stop)
+            {
+                Console.Clear();
+                Console.WindowHeight = 25;
+
+            }
+            return stop;
         }
       
         
@@ -45,9 +55,7 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
                 {
                     value = byte.Parse(text);
                     if (value % 2 == 0 || value > maxValue || value < 1)
-                    {
                         throw new Exception();
-                    }
                     return value;
                 }
                 catch {
@@ -58,36 +66,49 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
         }
 
         /// <summary>
-        ///  Renderar diamanten genom 2 for loppar den första hanterar den över delen och den nedre for loppen renderar den nere delen av diamenten
+        ///  Renderar diamanten genom 2 for loppar den första hanterar den över delen och den nedre for loppen renderar den nere delen av diamenten 
+        ///  
+        /// (EXTRA) Lagt till så att rutan blir störe så diamanten får plats och så rutan ändrar storleken igen efter 3sekunder
         /// </summary>
         /// <param name="maxCount">bredden på diamantens mitt</param>
         static void RenderDiamond(byte maxCount) 
-        { 
+        {
 
-                for ( byte amountAsterisk = 1; amountAsterisk < maxCount; amountAsterisk += 2) 
-                {
-                    RenderRow(maxCount, amountAsterisk);
-                }
+            if (maxCount == 1) {
+                Console.WriteLine();
+                Console.WriteLine(Properties.Resources.Ask_Mats);
+                return;
+            }
+            if (maxCount >= 79)
+                Console.WindowHeight = 82;
+            else
+                Console.WindowHeight = maxCount + 4;
 
-                for (int amountAsterisk = maxCount; amountAsterisk >= 0 ; amountAsterisk -= 2)
-                {
-                    RenderRow(maxCount, amountAsterisk);
-                }
-
-
+            for ( byte amountAsterisk = 1; amountAsterisk < maxCount; amountAsterisk += 2) 
+                RenderRow(maxCount, amountAsterisk);
+            
+            for (int amountAsterisk = maxCount; amountAsterisk >= 0 ; amountAsterisk -= 2)
+                RenderRow(maxCount, amountAsterisk);
 
         }
         
         
         
         /// <summary>
-        /// 
+        /// Renderar en rad
         /// </summary>
-        /// <param name="maxCount"></param>
-        /// <param name="asteriskCount"></param>
+        /// <param name="maxCount">Högsta anatalet</param>
+        /// <param name="asteriskCount">Antalet asterisker</param>
         static void RenderRow(int maxCount,int asteriskCount)
         {
-
+            Console.WriteLine("");
+            for (int rowPosition = 0; rowPosition < maxCount; rowPosition++)
+            {
+                if (maxCount == asteriskCount || rowPosition >= maxCount / 2 - asteriskCount / 2 && rowPosition <= maxCount / 2 + asteriskCount / 2)
+                    Console.Write("*");
+                else
+                    Console.Write(" ");
+            }
         
         }
 
@@ -100,17 +121,13 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
         private static void ViewMessage(string message, bool isError = false)
         {
             if (isError)
-            {
                 Console.BackgroundColor = ConsoleColor.Red;
-            }
             else
-            {
                 Console.BackgroundColor = ConsoleColor.DarkGreen;
-            }
             Console.WriteLine("\n {0}", message);
             Console.ResetColor();
         }
-    
+
     
     
     

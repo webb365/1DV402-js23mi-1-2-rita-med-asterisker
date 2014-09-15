@@ -70,6 +70,15 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hur ska man göra här Mats? Det blir ingen diamant ifall värdet är 1 och det står inget om vad man ska göra med detta i dokumenentationen. .
+        /// </summary>
+        internal static string Ask_Mats {
+            get {
+                return ResourceManager.GetString("Ask_Mats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tryck tagent för att fortsätta - ESC avslutar.
         /// </summary>
         internal static string Continue_Prompt {
