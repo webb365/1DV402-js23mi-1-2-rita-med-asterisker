@@ -13,7 +13,8 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
             const byte maxValue = 79;
             do
             {
-                ReadOddByte( string.Format(Properties.Resources.Ask_Count, maxValue),maxValue);
+                RenderDiamond(ReadOddByte(string.Format(Properties.Resources.Ask_Count, maxValue), maxValue));
+
             } while (IsContinuing());
         }
 
@@ -43,7 +44,7 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
                 try
                 {
                     value = byte.Parse(text);
-                    if (value % 2 == 0 || value >= maxValue || value < 1)
+                    if (value % 2 == 0 || value > maxValue || value < 1)
                     {
                         throw new Exception();
                     }
@@ -57,13 +58,27 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
         }
 
         /// <summary>
-        /// 
+        ///  Renderar diamanten genom 2 for loppar den första hanterar den över delen och den nedre for loppen renderar den nere delen av diamenten
         /// </summary>
-        /// <param name="maxCount"></param>
-        static void RenderDiamond(byte maxCount) { 
-        
-        
+        /// <param name="maxCount">bredden på diamantens mitt</param>
+        static void RenderDiamond(byte maxCount) 
+        { 
+
+                for ( byte amountAsterisk = 1; amountAsterisk < maxCount; amountAsterisk += 2) 
+                {
+                    RenderRow(maxCount, amountAsterisk);
+                }
+
+                for (int amountAsterisk = maxCount; amountAsterisk >= 0 ; amountAsterisk -= 2)
+                {
+                    RenderRow(maxCount, amountAsterisk);
+                }
+
+
+
         }
+        
+        
         
         /// <summary>
         /// 
@@ -73,7 +88,7 @@ namespace _1DV402_js23mi_1_2_rita_med_asterisker
         static void RenderRow(int maxCount,int asteriskCount)
         {
 
-
+        
         }
 
 
